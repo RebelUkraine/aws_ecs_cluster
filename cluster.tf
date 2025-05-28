@@ -27,7 +27,7 @@ resource "aws_autoscaling_group" "ecs" {
   max_size            = 2
   min_size            = 1
   desired_capacity    = 1
-  vpc_zone_identifier = [ aws_subnet.public_a, aws_subnet.public_b ] # Replace with your subnet id(s)
+  vpc_zone_identifier = [aws_subnet.public_a.id, aws_subnet.public_b.id] # Replace with your subnet id(s)
 
   launch_template {
     id      = aws_launch_template.ecs.id
