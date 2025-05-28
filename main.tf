@@ -1,1 +1,1 @@
-#this will be a main configuration file
+#  this will be a main configuration file
