@@ -7,7 +7,7 @@ resource "aws_ecs_cluster" "main" {
 resource "aws_launch_template" "ecs" {
   name          = "ecs-launch-template-rebel-grease"
   # name_prefix   = "ecs-launch-template-"
-  image_id      = "ami-02ec57994fa0fae21" # Replace with your ECS-optimized AMI
+  image_id      = "ami-001c4ccee38ce5932" # Replace with your ECS-optimized AMI
   instance_type = "t3.micro"
 
   user_data = base64encode(<<EOF
