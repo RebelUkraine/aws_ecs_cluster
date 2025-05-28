@@ -5,8 +5,8 @@ resource "aws_ecs_cluster" "main" {
 
 # 2. Launch Template (recommended over Launch Configuration)
 resource "aws_launch_template" "ecs" {
-  name          = "rebel-grease"
-  name_prefix   = "ecs-launch-template-"
+  name          = "ecs-launch-template-rebel-grease"
+  # name_prefix   = "ecs-launch-template-"
   image_id      = "ami-0430bc22c15775e7f" # Replace with your ECS-optimized AMI
   instance_type = "t3.micro"
 
