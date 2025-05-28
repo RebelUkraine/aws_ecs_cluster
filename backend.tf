@@ -1,5 +1,6 @@
  backend "s3" {
-    bucket = "remote_state"
+    bucket = "rebelgrease-state"
     key    = "terraform.tfstate"
     region = "eu-north-1"
+    dynamodb_table = "tf_lockid"
 }
