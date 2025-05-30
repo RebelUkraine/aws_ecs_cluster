@@ -12,6 +12,9 @@ resource "aws_launch_template" "ecs" {
 
   user_data = base64encode(<<EOF
 #!/bin/bash
+sudo yum update -y ecs-int
+sudo systemctl restart docker && service docker restart
+sudo start ecs
 echo ECS_CLUSTER=${aws_ecs_cluster.main.name} >> /etc/ecs/ecs.config
 EOF
   )
@@ -81,7 +84,7 @@ resource "aws_launch_template" "ecs_profile" {
     name = aws_iam_instance_profile.ecs_instance.name
   }
 
-  user_data = data.template_file.user_data.rendered
+  user_data = aws_launch_template.ecs.user_data
 
   lifecycle {
     create_before_destroy = true
