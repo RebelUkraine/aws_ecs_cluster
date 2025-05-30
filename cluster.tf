@@ -81,13 +81,15 @@ resource "aws_launch_template" "ecs_profile" {
     name = aws_iam_instance_profile.ecs_instance.name
   }
 
-  user_data = aws_launch_template.ecs.user_data
+  user_data = data.template_file.user_data.rendered
 
   lifecycle {
     create_before_destroy = true
   }
 }
-
+data "template_file" "user_data" {
+  template = file("user_data.tpl")
+}
 # Note:
 # - Replace "subnet-xxxxxxxx" with your actual subnet IDs (can provide multiple in a list).
 # - Replace the AMI ID with the latest ECS-optimized AMI for your region.
