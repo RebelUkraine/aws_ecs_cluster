@@ -1,0 +1,177 @@
+[
+    {
+        "id": "3674318e55553c0b",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "22e6fc997238923e",
+        "type": "telegram sender",
+        "z": "3674318e55553c0b",
+        "name": "",
+        "bot": "3c9578ea6da1cd2c",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 850,
+        "y": 320,
+        "wires": [
+            [
+                "08a1afc266bdfa05"
+            ]
+        ]
+    },
+    {
+        "id": "3c83fc4d6e85d1e3",
+        "type": "debug",
+        "z": "3674318e55553c0b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "4f61aeb51bbfd0f8",
+        "type": "telegram receiver",
+        "z": "3674318e55553c0b",
+        "name": "",
+        "bot": "3c9578ea6da1cd2c",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "3c83fc4d6e85d1e3",
+                "f2fb91615d163060"
+            ],
+            [
+                "3c83fc4d6e85d1e3",
+                "f2fb91615d163060"
+            ]
+        ]
+    },
+    {
+        "id": "f2fb91615d163060",
+        "type": "random",
+        "z": "3674318e55553c0b",
+        "name": "",
+        "low": 1,
+        "high": "2",
+        "inte": "true",
+        "property": "payload.content",
+        "x": 460,
+        "y": 340,
+        "wires": [
+            [
+                "5d6d09b61893917a"
+            ]
+        ]
+    },
+    {
+        "id": "f5824586d0b99211",
+        "type": "inject",
+        "z": "3674318e55553c0b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.chatId",
+                "v": "488120276",
+                "vt": "str"
+            },
+            {
+                "p": "payload.type",
+                "v": "message",
+                "vt": "str"
+            },
+            {
+                "p": "payload.content",
+                "v": "Choose",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 490,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "08a1afc266bdfa05",
+        "type": "debug",
+        "z": "3674318e55553c0b",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5d6d09b61893917a",
+        "type": "function",
+        "z": "3674318e55553c0b",
+        "name": "function 1",
+        "func": "\nif (msg.payload.content == 1) {\n    console.log(\"Orel\")\n    // Code to execute if the condition is true\n} else {\n    console.log(\"Reshka\")\n    // Code to execute if the condition is false\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 240,
+        "wires": [
+            [
+                "22e6fc997238923e"
+            ]
+        ]
+    },
+    {
+        "id": "3c9578ea6da1cd2c",
+        "type": "telegram bot",
+        "botname": "@HardDecisionBot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": 300,
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    }
+]
