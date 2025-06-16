@@ -25,3 +25,8 @@ jobs:
         role-to-assume: ${{ vars.IAM_ROLE_TO_ASSUME }}
         role-session-name: ${{ github.run_id }}
         aws-region: eu-north-1
+
+    - name: Docker login to ECR
+      run: |
+        aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 633087887197.dkr.ecr.eu-north-1.amazonaws.com
+        aws sts get-caller-identity
