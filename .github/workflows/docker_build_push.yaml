@@ -10,8 +10,18 @@ jobs:
     # Job name that shows in the GitHub UI
     name: Build Docker Images
     # Runner to use
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+
+    - name: AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ vars.IAM_ROLE_TO_ASSUME }}
+        role-session-name: ${{ github.run_id }}
+        aws-region: eu-north-1
