@@ -30,3 +30,9 @@ jobs:
       run: |
         aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 633087887197.dkr.ecr.eu-north-1.amazonaws.com
         aws sts get-caller-identity
+
+    - name: Docker build an push to ECR
+      run: |
+        cd node_red
+        docker build -t 633087887197.dkr.ecr.eu-north-1.amazonaws.com/node-red:1.1 .
+        docker push 633087887197.dkr.ecr.eu-north-1.amazonaws.com/node-red:1.1
