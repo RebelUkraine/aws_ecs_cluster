@@ -13,4 +13,5 @@ resource "aws_ecs_task_definition" "node-red" {
           hostPort      = 1880
         }
       ]
-    }
+    }])
+}
