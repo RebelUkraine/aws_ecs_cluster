@@ -65,3 +65,16 @@ resource "aws_lb_target_group" "node-red" {
   protocol = "HTTP"
   vpc_id   = aws_vpc.main.id
 }
+
+resource "aws_security_group" "node-red" {
+  name   = "node-red"
+  vpc_id = aws_vpc.main.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_ipv4" {
+  security_group_id = aws_security_group.node-red.id
+  cidr_ipv4         = aws_vpc.main.cidr_block
+  from_port         = 1880
+  ip_protocol       = "tcp"
+  to_port           = 1880
+}
