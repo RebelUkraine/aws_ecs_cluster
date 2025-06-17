@@ -40,3 +40,28 @@ resource "aws_ecs_service" "node-red" {
     expression = "attribute:ecs.availability-zone in [eu-north-1a, eu-north-1b]"
   }
 }
+
+resource "aws_lb" "node-red" {
+  name               = "node-red"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.lb_sg.id]
+  subnets            = [aws_subnet.public_a, aws_subnet.public_b]
+
+  enable_deletion_protection = true
+
+  #access_logs {
+  #  bucket  = aws_s3_bucket.lb_logs.id
+  #  prefix  = "test-lb"
+  #  enabled = true
+  #}
+
+}
+
+resource "aws_lb_target_group" "node-red" {
+  name     = "node-red"
+  target_type = "alb"
+  port     = 1880
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.main.id
+}
