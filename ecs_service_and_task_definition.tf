@@ -45,7 +45,7 @@ resource "aws_lb" "node-red" {
   name               = "node-red"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.lb_sg.id]
+  security_groups    = [aws_security_group.node-red.id]
   subnets            = [aws_subnet.public_a, aws_subnet.public_b]
 
   enable_deletion_protection = true
