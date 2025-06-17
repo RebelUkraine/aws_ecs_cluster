@@ -29,11 +29,11 @@ resource "aws_ecs_service" "node-red" {
     field = "cpu"
   }
 
-  #load_balancer {
-  #  target_group_arn = aws_lb_target_group.foo.arn
-  #  container_name   = "mongo"
-  #  container_port   = 8080
-  #}
+  load_balancer {
+    target_group_arn = aws_lb_target_group.node-red.arn
+    container_name   = "node-red"
+    container_port   = 1880
+  }
 
   placement_constraints {
     type       = "memberOf"
