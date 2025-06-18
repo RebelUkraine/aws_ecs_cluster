@@ -11,6 +11,14 @@ on:
           - apply
           - destroy
           - plan
+      unlock:
+        description: unlock state
+        required: false
+        type: boolean
+      unlock_id:
+        description: set the unlock ID
+        required: false
+        default: ''
 permissions:
   contents: read
 
@@ -39,7 +47,9 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
-     
+    - name: Unlock state
+      if: inputs.unlock
+      run: terraform force-unlock ${{ inpits.unlock_id }}
     - name: Terraform Init
       run: terraform init
 
