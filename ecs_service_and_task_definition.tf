@@ -27,7 +27,7 @@ resource "aws_ecs_service" "node-red" {
 
   ordered_placement_strategy {
     type  = "binpack"
-    field = "cpu"
+    field = "memory"
   }
 
   load_balancer {
