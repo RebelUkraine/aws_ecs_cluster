@@ -7,7 +7,7 @@ resource "aws_ecs_task_definition" "node-red" {
       requires_compatibilities = ["FARGATE"]
       cpu       = 256
       memory    = 512
-      essential = true
+      essential = truee
       portMappings = [
         {
           containerPort = 1880
