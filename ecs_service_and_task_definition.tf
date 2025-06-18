@@ -62,7 +62,7 @@ resource "aws_lb_target_group" "node-red" {
   name     = "node-red"
   target_type = "alb"
   port     = 1880
-  protocol = "HTTP"
+  protocol = "TCP"
   vpc_id   = aws_vpc.main.id
 }
 
