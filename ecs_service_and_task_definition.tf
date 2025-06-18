@@ -50,7 +50,7 @@ resource "aws_lb" "node-red" {
   security_groups    = [aws_security_group.node-red.id]
   subnets            = [aws_subnet.public_a.id, aws_subnet.public_b.id]
 
-  enable_deletion_protection = true
+  enable_deletion_protection = false
 
   #access_logs {
   #  bucket  = aws_s3_bucket.lb_logs.id
