@@ -49,7 +49,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1
     - name: Unlock state
       if: inputs.unlock
-      run: terraform force-unlock ${{ inpits.unlock_id }}
+      run: terraform force-unlock ${{ inputs.unlock_id }}
     - name: Terraform Init
       run: terraform init
 
