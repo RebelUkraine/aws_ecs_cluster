@@ -53,7 +53,9 @@ jobs:
 
     - name: Unlock state
       if: inputs.unlock
-      run: terraform force-unlock ${{ inputs.unlock_id }}
+      run: |
+        terraform force-unlock ${{ inputs.unlock_id }}
+        yes
 
     - name: Terraform Plan
       if: inputs.action == 'plan'
