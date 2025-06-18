@@ -45,7 +45,7 @@ resource "aws_autoscaling_group" "ecs" {
 
   health_check_type         = "EC2"
   force_delete              = true
-  wait_for_capacity_timeout = "100"
+  wait_for_capacity_timeout = 100
 }
 
 # 4. IAM Role for ECS Instances
