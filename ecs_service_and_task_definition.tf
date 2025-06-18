@@ -4,6 +4,7 @@ resource "aws_ecs_task_definition" "node-red" {
     {
       name      = "node-red"
       image     = "633087887197.dkr.ecr.eu-north-1.amazonaws.com/node-red:latest"
+      network_mode          = "awsvpc"
       requires_compatibilities = ["FARGATE"]
       cpu       = 256
       memory    = 512
