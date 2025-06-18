@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "node-red" {
-  family = "node-red"
+  family = "node-red-task"
   container_definitions = jsonencode([
     {
       name      = "node-red"
